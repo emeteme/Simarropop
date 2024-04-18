@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2024 a las 10:16:22
+-- Tiempo de generación: 18-04-2024 a las 10:29:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `wallapop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categories`
+--
+
+CREATE TABLE `categories` (
+  `idCategoria` int(20) NOT NULL,
+  `tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -49,9 +60,27 @@ CREATE TABLE `usuari` (
   `direccio` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vendedor`
+--
+
+CREATE TABLE `vendedor` (
+  `idVendedor` int(20) NOT NULL,
+  `categoriaVendedor` varchar(30) NOT NULL,
+  `contacte` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`idCategoria`);
 
 --
 -- Indices de la tabla `productes`
@@ -64,6 +93,12 @@ ALTER TABLE `productes`
 --
 ALTER TABLE `usuari`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `vendedor`
+--
+ALTER TABLE `vendedor`
+  ADD PRIMARY KEY (`idVendedor`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
